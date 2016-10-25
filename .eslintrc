@@ -1,0 +1,11 @@
+{
+    "extends": "rallycoding",
+    "env": {
+        "jest": true
+    },
+    "rules": {
+        "arrow-body-style": 0,
+        "import/no-extraneous-dependencies": 0,
+        "padded-blocks": 0
+    }
+}
