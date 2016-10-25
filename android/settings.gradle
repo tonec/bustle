@@ -1,0 +1,3 @@
+rootProject.name = 'bustle'
+
+include ':app'
