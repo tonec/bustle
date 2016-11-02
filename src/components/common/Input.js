@@ -1,12 +1,20 @@
 import React from 'react';
 import { TextInput, View, Text } from 'react-native';
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
-    const { inputStyle, labelStyle, containerStyle } = styles;
+const Input = (props) => {
+    const { label, value, onChangeText, placeholder, secureTextEntry } = props;
+    
+    const containerStyle = Object.assign({}, styles.containerStyle, props.styles.containerStyle);
+    const labelStyle = Object.assign({}, styles.labelStyle, props.styles.labelStyle);
+    const inputStyle = Object.assign({}, styles.inputStyle, props.styles.inputStyle);
 
     return (
         <View style={containerStyle}>
-            <Text style={labelStyle}>{label}</Text>
+
+            <Text style={labelStyle}>
+                {label}
+            </Text>
+
             <TextInput
                 secureTextEntry={secureTextEntry}
                 placeholder={placeholder}
@@ -15,6 +23,7 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
                 onChangeText={onChangeText}
                 style={inputStyle}
             />
+
         </View>
     );
 };
@@ -24,17 +33,20 @@ Input.propTypes = {
     placeholder: React.PropTypes.string,
     autoCorrect: React.PropTypes.bool,
     value: React.PropTypes.string,
-    onChangeText: React.PropTypes.func
+    onChangeText: React.PropTypes.func,
+    styles: React.PropTypes.object
 };
 
 const styles = {
     inputStyle: {
-        color: '#000',
+        color: 'yellow',
         paddingRight: 5,
         paddingLeft: 5,
         fontSize: 18,
         lineHeight: 23,
-        flex: 2
+        flex: 2,
+        borderColor: 'red',
+        borderWidth: 1
     },
     labelStyle: {
         fontSize: 18,

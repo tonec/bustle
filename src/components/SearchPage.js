@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Input } from './common';
 
 class SearchPage extends Component {
 
     render() {
         return (
             <View>
-                <Text>Search page</Text>
+                <Text>Fromdsdsd:</Text>
+                <Input
+                    styles={styles}
+                    placeholder={'Current location'}
+                    value={'value'}
+                />
             </View>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    errorTextStyles: {
-        fontSize: 16,
-        paddingTop: 5,
-        paddingLeft: 5,
-        paddingRight: 5,
-        alignSelf: 'center',
-        color: 'red'
+const styles = {
+    inputStyle: {
+        // color: 'red'
     }
-});
+};
 
 export default SearchPage;
