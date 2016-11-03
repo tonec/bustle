@@ -1,6 +1,6 @@
 import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
-import SearchPage from './components/SearchPage';
+import Search from './components/Search';
 
 const RouterComponent = () => {
     const { sceneStyle } = styles;
@@ -11,8 +11,8 @@ const RouterComponent = () => {
             <Scene key='mainScene'>
                 <Scene
                     key='searchScene'
-                    component={SearchPage}
-                    title='Search page'
+                    component={Search}
+                    title='Search'
                 />
             </Scene>
 
