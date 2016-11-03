@@ -37,6 +37,7 @@ Input.propTypes = {
 };
 
 const styles = StyleSheet.create({
+
     containerStyle: {
         flexDirection: 'column',
         alignItems: 'flex-start',
@@ -44,11 +45,13 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         paddingBottom: 50
     },
+
     labelStyle: {
         fontSize: 18,
         paddingLeft: 5,
         paddingBottom: 10
     },
+
     inputStyle: {
         height: 42,
         paddingRight: 10,
