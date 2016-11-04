@@ -14,13 +14,13 @@ const Button = (props) => {
     );
 };
 
-Button.defaultProps = {
-    styles: {}
-};
-
 Button.propTypes = {
     onPress: PropTypes.func.isRequired,
     styles: PropTypes.object
+};
+
+Button.defaultProps = {
+    styles: {}
 };
 
 const styles = StyleSheet.create({
