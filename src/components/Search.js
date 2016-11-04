@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Globals from '../services/Globals';
 import Geocoder from '../services/Geocoder';
-import { Input } from './common';
+import { Input, ButtonIcon } from './common';
 
 class Search extends Component {
 
@@ -50,6 +50,9 @@ class Search extends Component {
                     placeholder={'Location'}
                     value={this.state.currentPosition}
                 />
+                <ButtonIcon onPress={() => {}}>
+                    Button
+                </ButtonIcon>
                 <Input
                     label={'Destination:'}
                     placeholder={'Current location'}
