@@ -1,25 +1,30 @@
-import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React, { PropTypes } from 'react';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Button = ({ onPress, children }) => {
-    const { buttonStyle, textStyle } = styles;
+const Button = (props) => {
+    const { onPress, children } = props;
+    const { buttonStyle, textStyle } = props.styles;
 
     return (
-        <TouchableOpacity style={buttonStyle} onPress={onPress}>
-            <Text style={textStyle}>
+        <TouchableOpacity style={[styles.buttonStyle, buttonStyle]} onPress={onPress}>
+            <Text style={[styles.textStyle, textStyle]}>
                 {children}
             </Text>
         </TouchableOpacity>
     );
 };
 
-Button.propTypes = {
-    onPress: React.PropTypes.func.isRequired
+Button.defaultProps = {
+    styles: {}
 };
 
-const styles = {
+Button.propTypes = {
+    onPress: PropTypes.func.isRequired,
+    styles: PropTypes.object
+};
+
+const styles = StyleSheet.create({
     buttonStyle: {
-        flex: 1,
         alignSelf: 'stretch',
         backgroundColor: '#fff',
         borderRadius: 5,
@@ -36,6 +41,6 @@ const styles = {
         paddingTop: 10,
         paddingBottom: 10
     }
-};
+});
 
 export { Button };
