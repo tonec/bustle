@@ -22,10 +22,6 @@ const Input = (props) => {
     );
 };
 
-Input.defaultProps = {
-    styles: {}
-};
-
 Input.propTypes = {
     label: PropTypes.string,
     placeholder: PropTypes.string,
@@ -34,6 +30,10 @@ Input.propTypes = {
     autoCorrect: PropTypes.bool,
     secureTextEntry: PropTypes.bool,
     styles: PropTypes.object
+};
+
+Input.defaultProps = {
+    styles: {}
 };
 
 const styles = StyleSheet.create({
@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
     },
 
     inputStyle: {
-        height: 42,
+        height: 40,
         paddingRight: 10,
         paddingLeft: 10,
         fontSize: 18,
-        lineHeight: 42,
+        lineHeight: 40,
         borderWidth: 1,
         borderColor: 'black',
         borderRadius: 5
