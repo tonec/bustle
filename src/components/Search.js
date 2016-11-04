@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
+import Globals from '../services/Globals';
 import Geocoder from '../services/Geocoder';
 import { Input } from './common';
 
@@ -19,7 +20,7 @@ class Search extends Component {
             (position) => {
                 const { longitude, latitude } = position.coords;
 
-                Geocoder.setApiKey('AIzaSyDb3TSwTYnXVxkQJOdEY04klpGK9w-xhvw');
+                Geocoder.setApiKey(Globals.googleApiKey);
 
                 Geocoder.getFromCoords({
                     lat: latitude,
