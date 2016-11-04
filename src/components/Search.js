@@ -24,15 +24,11 @@ class Search extends Component {
                 Geocoder.getFromCoords({
                     lat: latitude,
                     lng: longitude
-                }).then(
-                    json => {
-                        const location = json.results[0].formatted_address;
-                            this.setState({ currentPosition: location });
-                        },
-                    error => {
-                        alert(error);
-                        }
-                );
+                }).then(json => {
+                    const location = json.results[0].formatted_address;
+                    this.setState({ currentPosition: location });
+                })
+                .catch(error => alert(error));
             },
             (error) => {
                 alert(JSON.stringify(error));
