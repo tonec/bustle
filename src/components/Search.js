@@ -44,15 +44,19 @@ class Search extends Component {
 
     render() {
         return (
-            <View style={styles.containerStyles}>
+            <View style={styles.containerStyle}>
                 <Input
                     label={'Location:'}
                     placeholder={'Location'}
                     value={this.state.currentPosition}
                 />
-                <ButtonIcon onPress={() => {}}>
-                    Button
-                </ButtonIcon>
+                <ButtonIcon
+                    onPress={() => {}}
+                    iconName={'map-marker'}
+                    iconSize={26}
+                    iconColor={'#fff'}
+                    buttonText={''}
+                />
                 <Input
                     label={'Destination:'}
                     placeholder={'Current location'}
@@ -64,7 +68,7 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
-    containerStyles: {
+    containerStyle: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center'
