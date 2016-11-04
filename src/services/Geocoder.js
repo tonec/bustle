@@ -7,17 +7,30 @@ export default {
         this.apiKey = apiKey;
     },
 
-    async getFromLocation(address) {
+    getFromLocation(location) {
+        return this.getFrom('location', location);
+    },
+
+    getFromCoords(coords) {
+        return this.getFrom('coords', coords);
+    },
+
+    async getFrom(type, data) {
+        let url;
+
+        if (type === 'location') {
+            url = `${googleApiUrl}?key=${this.apiKey}&address=${encodeURI(data.location)}`;
+        } else {
+            url = `${googleApiUrl}?key=${this.apiKey}&latlng=${data.lat},${data.lng}`;
+        }
 
         if (!this.apiKey) {
             return Promise.reject(new Error('Provided API key is invalid'));
         }
 
-        if (!address) {
-            return Promise.reject(new Error('Provided address is invalid'));
+        if (!data) {
+            return Promise.reject(new Error('Provided data is invalid'));
         }
-
-        const url = `${googleApiUrl}?key=${this.apiKey}&address=${encodeURI(address)}`;
 
         const response = await fetch(url).catch(
             error => {
@@ -36,36 +49,5 @@ export default {
         }
 
         return Promise.reject(new Error(`Server returned status code ${json.status}`));
-    },
-
-    async getFromCoords(coords) {
-
-        if (!this.apiKey) {
-            return Promise.reject(new Error('Provided API key is invalid'));
-        }
-
-        if (!coords) {
-            return Promise.reject(new Error('Provided coords invalid'));
-        }
-
-        const url = `${googleApiUrl}?key=${this.apiKey}&latlng=${coords.lat},${coords.lng}`;
-
-        const response = await fetch(url).catch(
-            error => {
-                return Promise.reject(new Error(`Error fetching data: ${error}`));
-            }
-        );
-
-        const json = await response.json().catch(
-            error => {
-                return Promise.reject(new Error(`Error parsing server response: ${error}`));
-            }
-        );
-
-        if (json.status === 'OK') {
-            return json;
-        }
-
-        return Promise.reject(new Error(`Server returned status code: ${json.status}`));
     }
 };

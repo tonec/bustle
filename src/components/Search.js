@@ -26,7 +26,6 @@ class Search extends Component {
                     lng: longitude
                 }).then(
                     json => {
-                        console.log(json.results[0]);
                         const location = json.results[0].formatted_address;
                             this.setState({ currentPosition: location });
                         },
