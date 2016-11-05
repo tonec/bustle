@@ -3,7 +3,7 @@ import { TextInput, View, Text, StyleSheet } from 'react-native';
 
 const Input = (props) => {
     const { label, value, onChangeText, placeholder, secureTextEntry } = props;
-    const { containerStyle, labelStyle, inputStyle } = props.styles;
+    const { containerStyle, labelStyle, inputStyle } = props.style;
 
     return (
         <View style={[styles.containerStyle, containerStyle]}>
@@ -18,6 +18,7 @@ const Input = (props) => {
                 secureTextEntry={secureTextEntry}
                 style={[styles.inputStyle, inputStyle]}
             />
+            {props.children}
         </View>
     );
 };
@@ -29,11 +30,11 @@ Input.propTypes = {
     onChangeText: PropTypes.func,
     autoCorrect: PropTypes.bool,
     secureTextEntry: PropTypes.bool,
-    styles: PropTypes.object
+    style: PropTypes.object
 };
 
 Input.defaultProps = {
-    styles: {}
+    style: {}
 };
 
 const styles = StyleSheet.create({

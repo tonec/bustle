@@ -4,6 +4,7 @@ import Globals from '../services/Globals';
 import Geocoder from '../services/Geocoder';
 import { Input, ButtonIcon } from './common';
 
+
 class Search extends Component {
 
     constructor(props) {
@@ -45,23 +46,22 @@ class Search extends Component {
     render() {
         return (
             <View style={styles.containerStyle}>
+
                 <Input
-                    label={'Location:'}
-                    placeholder={'Location'}
-                    value={this.state.currentPosition}
-                />
-                <ButtonIcon
-                    onPress={() => {}}
-                    iconName={'map-marker'}
-                    iconSize={26}
-                    iconColor={'#fff'}
-                    buttonText={''}
-                />
-                <Input
-                    label={'Destination:'}
-                    placeholder={'Current location'}
+                    label={'Location: '}
+                    placeholder={'Enter location'}
                     value={''}
-                />
+                    onPress={() => {}}
+                >
+                    <ButtonIcon
+                        iconName={'map-marker'}
+                        iconSize={26}
+                        iconColor={'#fff'}
+                        buttonText={''}
+                        onPress={() => {}}
+                    />
+                </Input>
+
             </View>
         );
     }
