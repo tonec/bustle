@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import Globals from '../services/Globals';
-import Geocoder from '../services/Geocoder';
+import GetCurrentLocation from '../services/GetCurrentLocation';
 import { Input, ButtonIcon } from './common';
-
 
 class Search extends Component {
 
@@ -11,36 +9,14 @@ class Search extends Component {
         super(props);
 
         this.state = {
-            currentPosition: 'unknown'
+            currentLocation: 'unknown'
         };
     }
 
-    componentDidMount() {
-
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const { longitude, latitude } = position.coords;
-
-                Geocoder.setApiKey(Globals.googleApiKey);
-
-                Geocoder.getFromCoords({
-                    lat: latitude,
-                    lng: longitude
-                }).then(json => {
-                    const location = json.results[0].formatted_address;
-                    this.setState({ currentPosition: location });
-                })
-                .catch(error => alert(error));
-            },
-            (error) => {
-                alert(JSON.stringify(error));
-            },
-            {
-                enableHighAccuracy: true,
-                timeout: 20000,
-                maximumAge: 1000
-            }
-        );
+    handleClick() {
+        GetCurrentLocation(location => {
+            this.setState({ currentLocation: location });
+        });
     }
 
     render() {
@@ -50,15 +26,14 @@ class Search extends Component {
                 <Input
                     label={'Location: '}
                     placeholder={'Enter location'}
-                    value={''}
-                    onPress={() => {}}
+                    value={this.state.currentLocation}
                 >
                     <ButtonIcon
                         iconName={'map-marker'}
                         iconSize={26}
                         iconColor={'#fff'}
                         buttonText={''}
-                        onPress={() => {}}
+                        onPress={this.handleClick.bind(this)}
                         style={styles}
                     />
                 </Input>
@@ -67,7 +42,6 @@ class Search extends Component {
                     label={'Destination: '}
                     placeholder={'Enter destination'}
                     value={''}
-                    onPress={() => {}}
                 >
                     <ButtonIcon
                         iconName={'map-marker'}
