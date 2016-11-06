@@ -3,22 +3,24 @@ import { TextInput, View, Text, StyleSheet } from 'react-native';
 
 const Input = (props) => {
     const { label, value, onChangeText, placeholder, secureTextEntry } = props;
-    const { containerStyle, labelStyle, inputStyle } = props.style;
+    const { containerStyle, innerContainerStyle, labelStyle, inputStyle } = props.style;
 
     return (
         <View style={[styles.containerStyle, containerStyle]}>
             <Text style={[styles.labelStyle, labelStyle]}>
                 {label}
             </Text>
-            <TextInput
-                placeholder={placeholder}
-                value={value}
-                onChangeText={onChangeText}
-                autoCorrect={false}
-                secureTextEntry={secureTextEntry}
-                style={[styles.inputStyle, inputStyle]}
-            />
-            {props.children}
+            <View style={[styles.innerContainerStyle, innerContainerStyle]}>
+                <TextInput
+                    placeholder={placeholder}
+                    value={value}
+                    onChangeText={onChangeText}
+                    autoCorrect={false}
+                    secureTextEntry={secureTextEntry}
+                    style={[styles.inputStyle, inputStyle]}
+                />
+                {props.children}
+            </View>
         </View>
     );
 };
@@ -47,6 +49,10 @@ const styles = StyleSheet.create({
         paddingBottom: 50
     },
 
+    innerContainerStyle: {
+        flexDirection: 'row'
+    },
+
     labelStyle: {
         fontSize: 18,
         paddingLeft: 5,
@@ -54,6 +60,7 @@ const styles = StyleSheet.create({
     },
 
     inputStyle: {
+        flex: 1,
         height: 40,
         paddingRight: 10,
         paddingLeft: 10,
