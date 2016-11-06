@@ -59,6 +59,23 @@ class Search extends Component {
                         iconColor={'#fff'}
                         buttonText={''}
                         onPress={() => {}}
+                        style={styles}
+                    />
+                </Input>
+
+                <Input
+                    label={'Destination: '}
+                    placeholder={'Enter destination'}
+                    value={''}
+                    onPress={() => {}}
+                >
+                    <ButtonIcon
+                        iconName={'map-marker'}
+                        iconSize={26}
+                        iconColor={'#fff'}
+                        buttonText={''}
+                        onPress={() => {}}
+                        style={styles}
                     />
                 </Input>
 
@@ -72,6 +89,10 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center'
+    },
+    buttonStyle: {
+        marginLeft: 10,
+        backgroundColor: 'red'
     }
 });
 
