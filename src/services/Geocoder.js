@@ -1,4 +1,4 @@
-const googleApiUrl = 'https://maps.google.com/maps/api/geocode/json';
+import Globals from './Globals';
 
 export default {
     apiKey: null,
@@ -27,9 +27,9 @@ export default {
         }
 
         if (type === 'location') {
-            url = `${googleApiUrl}?key=${this.apiKey}&address=${encodeURI(data.location)}`;
+            url = `${Globals.geocodingApiUrl}?key=${this.apiKey}&address=${encodeURI(data.location)}`;
         } else {
-            url = `${googleApiUrl}?key=${this.apiKey}&latlng=${data.lat},${data.lng}`;
+            url = `${Globals.geocodingApiUrl}?key=${this.apiKey}&latlng=${data.lat},${data.lng}`;
         }
 
         return fetch(url).then(response => {

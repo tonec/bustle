@@ -7,7 +7,7 @@ export default (callback) => {
         (position) => {
             const { longitude, latitude } = position.coords;
 
-            Geocoder.setApiKey(Globals.googleApiKey);
+            Geocoder.setApiKey(Globals.geocodingApiKey);
 
             Geocoder.getFromCoords({
                 lat: latitude,
