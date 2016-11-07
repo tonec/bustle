@@ -13,7 +13,9 @@ export default (callback) => {
                 const location = json.results[0].formatted_address;
                 return callback(location);
             })
-            .catch(error => alert(error));
+            .catch(error => {
+                Promise.reject(new Error(error));
+            });
         },
         (error) => {
             alert(JSON.stringify(error));

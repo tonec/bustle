@@ -22,6 +22,7 @@ class Search extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <View style={styles.containerStyle}>
 
@@ -67,8 +68,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ search }) => {
-    const { currentLocation, currentDestination } = search;
-    return { currentLocation, currentDestination };
+    const { currentLocation, currentDestination, locationList } = search;
+    return { currentLocation, currentDestination, locationList };
 };
 
 export default connect(mapStateToProps, SearchActions)(Search);
