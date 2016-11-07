@@ -1,1 +1,1 @@
-export const EMAIL_CHANGED = 'email_changed';
+export const CURRENT_LOCATION_CHANGED = 'current_location_changed';

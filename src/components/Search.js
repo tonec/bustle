@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { currentLocationChanged } from '../actions/SearchActions';
 import GetCurrentLocation from '../services/GetCurrentLocation';
 import { Input, ButtonIcon } from './common';
 
 class Search extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            currentLocation: 'unknown'
-        };
-    }
-
     handleClick() {
         GetCurrentLocation(location => {
-            this.setState({ currentLocation: location });
+            this.props.currentLocationChanged(location);
         });
     }
 
@@ -23,35 +17,36 @@ class Search extends Component {
         return (
             <View style={styles.containerStyle}>
 
-                <Input
-                    label={'Location: '}
-                    placeholder={'Enter location'}
-                    value={this.state.currentLocation}
-                >
-                    <ButtonIcon
-                        iconName={'map-marker'}
-                        iconSize={26}
-                        iconColor={'#fff'}
-                        buttonText={''}
-                        onPress={this.handleClick.bind(this)}
-                        style={styles}
-                    />
-                </Input>
-
-                <Input
-                    label={'Destination: '}
-                    placeholder={'Enter destination'}
-                    value={''}
-                >
-                    <ButtonIcon
-                        iconName={'map-marker'}
-                        iconSize={26}
-                        iconColor={'#fff'}
-                        buttonText={''}
-                        onPress={() => {}}
-                        style={styles}
-                    />
-                </Input>
+                <KeyboardAvoidingView behavior='padding'>
+                    <Input
+                        label={'Location: '}
+                        placeholder={'Enter location'}
+                        value={this.props.currentLocation}
+                    >
+                        <ButtonIcon
+                            iconName={'map-marker'}
+                            iconSize={26}
+                            iconColor={'#fff'}
+                            buttonText={''}
+                            onPress={this.handleClick.bind(this)}
+                            style={styles}
+                        />
+                    </Input>
+                    <Input
+                        label={'Destination: '}
+                        placeholder={'Enter destination'}
+                        value={''}
+                    >
+                        <ButtonIcon
+                            iconName={'map-marker'}
+                            iconSize={26}
+                            iconColor={'#fff'}
+                            buttonText={''}
+                            onPress={() => {}}
+                            style={styles}
+                        />
+                    </Input>
+                </KeyboardAvoidingView>
 
             </View>
         );
@@ -70,4 +65,9 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Search;
+const mapStateToProps = ({ search }) => {
+    const { currentLocation, currentDestination } = search;
+    return { currentLocation, currentDestination };
+};
+
+export default connect(mapStateToProps, { currentLocationChanged })(Search);
