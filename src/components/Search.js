@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
-import { currentLocationChanged } from '../actions/SearchActions';
+import * as SearchActions from '../actions/SearchActions';
 import GetCurrentLocation from '../services/GetCurrentLocation';
 import { Input, ButtonIcon } from './common';
 
@@ -13,6 +13,14 @@ class Search extends Component {
         });
     }
 
+    handleLocationChange(text) {
+        this.props.locationTextChanged(text);
+    }
+
+    handleDestinationChange(text) {
+        this.props.destinationTextChanged(text);
+    }
+
     render() {
         return (
             <View style={styles.containerStyle}>
@@ -20,7 +28,8 @@ class Search extends Component {
                 <KeyboardAvoidingView behavior='padding'>
                     <Input
                         label={'Location: '}
-                        placeholder={'Enter location'}
+                        placeholder={'Search location'}
+                        onChangeText={this.handleLocationChange.bind(this)}
                         value={this.props.currentLocation}
                     >
                         <ButtonIcon
@@ -34,18 +43,10 @@ class Search extends Component {
                     </Input>
                     <Input
                         label={'Destination: '}
-                        placeholder={'Enter destination'}
-                        value={''}
-                    >
-                        <ButtonIcon
-                            iconName={'map-marker'}
-                            iconSize={26}
-                            iconColor={'#fff'}
-                            buttonText={''}
-                            onPress={() => {}}
-                            style={styles}
-                        />
-                    </Input>
+                        placeholder={'Search destination'}
+                        onChangeText={this.handleDestinationChange.bind(this)}
+                        value={this.props.currentDestination}
+                    />
                 </KeyboardAvoidingView>
 
             </View>
@@ -70,4 +71,4 @@ const mapStateToProps = ({ search }) => {
     return { currentLocation, currentDestination };
 };
 
-export default connect(mapStateToProps, { currentLocationChanged })(Search);
+export default connect(mapStateToProps, SearchActions)(Search);
