@@ -1,29 +1,29 @@
-import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
-import Search from './components/Search';
+import React from 'react'
+import { Scene, Router, Actions } from 'react-native-router-flux'
+import Search from './components/Search'
 
 const RouterComponent = () => {
-    const { sceneStyle } = styles;
+  const { sceneStyle } = styles
 
-    return (
-        <Router sceneStyle={sceneStyle} >
+  return (
+    <Router sceneStyle={sceneStyle} >
 
-            <Scene key='mainScene'>
-                <Scene
-                    key='searchScene'
-                    component={Search}
-                    title='Search'
-                />
-            </Scene>
+      <Scene key='mainScene'>
+        <Scene
+          key='searchScene'
+          component={Search}
+          title='Search'
+        />
+      </Scene>
 
-        </Router>
-    );
-};
+    </Router>
+  )
+}
 
 const styles = {
-    sceneStyle: {
-        paddingTop: 65
-    }
-};
+  sceneStyle: {
+    paddingTop: 65
+  }
+}
 
-export default RouterComponent;
+export default RouterComponent

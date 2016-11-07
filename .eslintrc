@@ -1,13 +1,21 @@
 {
-    "extends": "rallycoding",
-    "env": {
-        "browser": true,
-        "jest": true
-    },
-    "rules": {
-        "arrow-body-style": 0,
-        "import/no-extraneous-dependencies": 0,
-        "padded-blocks": 0,
-        "max-len": 0
+  "extends": "standard",
+  "plugin": [
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     }
+  },
+  "rules": {
+    "arrow-body-style": 0,
+    "import/no-extraneous-dependencies": 0,
+    "padded-blocks": 0,
+    "max-len": 0
+  }
 }
