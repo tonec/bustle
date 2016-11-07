@@ -1,11 +1,8 @@
 import Globals from './Globals';
 
 export default {
-    apiKey: null,
-
-    setApiKey(apiKey) {
-        this.apiKey = apiKey;
-    },
+    apiUrl: Globals.geocodingApiUrl,
+    apiKey: Globals.geocodingApiKey,
 
     getFromLocation(location) {
         return this.getFrom('location', location);
@@ -27,9 +24,9 @@ export default {
         }
 
         if (type === 'location') {
-            url = `${Globals.geocodingApiUrl}?key=${this.apiKey}&address=${encodeURI(data.location)}`;
+            url = `${this.apiUrl}?key=${this.apiKey}&address=${encodeURI(data.location)}`;
         } else {
-            url = `${Globals.geocodingApiUrl}?key=${this.apiKey}&latlng=${data.lat},${data.lng}`;
+            url = `${this.apiUrl}?key=${this.apiKey}&latlng=${data.lat},${data.lng}`;
         }
 
         return fetch(url).then(response => {

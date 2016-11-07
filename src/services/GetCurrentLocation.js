@@ -1,13 +1,10 @@
 import Geocoder from './Geocoder';
-import Globals from './Globals';
 
 export default (callback) => {
 
     navigator.geolocation.getCurrentPosition(
         (position) => {
             const { longitude, latitude } = position.coords;
-
-            Geocoder.setApiKey(Globals.geocodingApiKey);
 
             Geocoder.getFromCoords({
                 lat: latitude,
