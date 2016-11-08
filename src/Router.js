@@ -1,18 +1,18 @@
 import React from 'react'
+import { StyleSheet } from 'react-native'
 import { Scene, Router, Actions } from 'react-native-router-flux'
-import Search from './components/Search'
+import Main from './layout/Main'
 
 const RouterComponent = () => {
-  const { sceneStyle } = styles
 
   return (
-    <Router sceneStyle={sceneStyle} >
+    <Router sceneStyle={style.scene} >
 
-      <Scene key='mainScene'>
+      <Scene key='primaryScene'>
         <Scene
-          key='searchScene'
-          component={Search}
-          title='Search'
+          key='mainScene'
+          component={Main}
+          title='Main'
         />
       </Scene>
 
@@ -20,10 +20,10 @@ const RouterComponent = () => {
   )
 }
 
-const styles = {
-  sceneStyle: {
+const style = StyleSheet.create({
+  scene: {
     paddingTop: 65
   }
-}
+})
 
 export default RouterComponent

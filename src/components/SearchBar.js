@@ -1,30 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, KeyboardAvoidingView, ListView, StyleSheet } from 'react-native'
+import { View, KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import * as searchActions from '../actions/searchActions'
 import { Input, ButtonIcon } from './common'
 
-class Search extends Component {
-
-  constructor (props, context) {
-    super(props)
-
-    const ds = new ListView.DataSource({
-      rowHasChanged: (oldRow, newRow) => oldRow !== newRow
-    })
-
-    this.state = {
-      dataSource: ds
-    }
-  }
-
-  componentWillReceiveProps (newProps) {
-    if (newProps.locationList !== this.props.locationList) {
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(newProps.locationList)
-      })
-    }
-  }
+class SearchBar extends Component {
 
   handleClick () {
     this.props.getCurrentLocation()
@@ -65,12 +45,6 @@ class Search extends Component {
               value={this.props.currentDestination}
           />
         </KeyboardAvoidingView>
-
-        <ListView
-          enableEmptySections
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData}</Text>}
-        />
       </View>
     )
   }
@@ -89,8 +63,8 @@ const style = StyleSheet.create({
 })
 
 const mapStateToProps = ({ search }) => {
-  const { currentLocation, currentDestination, locationList } = search
-  return { currentLocation, currentDestination, locationList }
+  const { currentLocation, currentDestination } = search
+  return { currentLocation, currentDestination }
 }
 
-export default connect(mapStateToProps, searchActions)(Search)
+export default connect(mapStateToProps, searchActions)(SearchBar)
