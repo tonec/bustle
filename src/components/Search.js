@@ -9,14 +9,21 @@ class Search extends Component {
   constructor (props, context) {
     super(props)
 
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-    this.state = { dataSource: ds.cloneWithRows(this.props.locationList) }
+    const ds = new ListView.DataSource({
+      rowHasChanged: (oldRow, newRow) => oldRow !== newRow
+    })
+
+    this.state = {
+      dataSource: ds
+    }
   }
 
   componentWillReceiveProps (newProps) {
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(newProps.locationList)
-    })
+    if (newProps.locationList !== this.props.locationList) {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(newProps.locationList)
+      })
+    }
   }
 
   handleClick () {
