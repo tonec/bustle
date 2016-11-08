@@ -21,13 +21,10 @@ export const locationTextChanged = (text) => {
       type: LOCATION_TEXT_CHANGED,
       payload: text
     })
-
     if (text.length > 2) {
-
       dispatch({
         type: LOCATION_LIST_UPDATING
       })
-
       Places.autocompletePlaceName(text).then(res => {
         dispatch({
           type: LOCATION_LIST_UPDATED,
