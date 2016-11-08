@@ -1,5 +1,6 @@
 import {
-  CURRENT_LOCATION_CHANGED,
+  CURRENT_LOCATION_UPDATING,
+  CURRENT_LOCATION_UPDATED,
   LOCATION_TEXT_CHANGED,
   DESTINATION_TEXT_CHANGED,
   LOCATION_LIST_UPDATING,
@@ -7,6 +8,7 @@ import {
 } from '../actions/types'
 
 const INITIAL_STATE = {
+  currentLocationUpdating: false,
   currentLocation: null,
   locationText: null,
   destinationText: null,
@@ -20,8 +22,11 @@ export default (state = INITIAL_STATE, action) => {
 
   switch (action.type) {
 
-    case CURRENT_LOCATION_CHANGED:
-      return { ...state, currentLocation: action.payload }
+    case CURRENT_LOCATION_UPDATING:
+      return { ...state, currentLocationUpdating: true }
+
+    case CURRENT_LOCATION_UPDATED:
+      return { ...state, currentLocation: action.payload, currentLocationUpdating: false }
 
     case LOCATION_TEXT_CHANGED:
       return { ...state, locationText: action.payload }

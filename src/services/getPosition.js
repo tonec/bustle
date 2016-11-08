@@ -1,4 +1,4 @@
-import Geocoder from './Geocoder'
+import geocoder from './geocoder'
 
 export default (callback) => {
 
@@ -6,7 +6,7 @@ export default (callback) => {
     (position) => {
       const { longitude, latitude } = position.coords
 
-      Geocoder.getFromCoords({
+      geocoder.getFromCoords({
         lat: latitude,
         lng: longitude
       }).then(json => {

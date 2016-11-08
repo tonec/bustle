@@ -1,4 +1,5 @@
-export const CURRENT_LOCATION_CHANGED = 'current_location_changed'
+export const CURRENT_LOCATION_UPDATING = 'current_location_updating'
+export const CURRENT_LOCATION_UPDATED = 'current_location_updated'
 export const LOCATION_TEXT_CHANGED = 'location_text_changed'
 export const DESTINATION_TEXT_CHANGED = 'destination_text_changed'
 export const LOCATION_LIST_UPDATING = 'location_list_updating'

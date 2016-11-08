@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Text, View, KeyboardAvoidingView, ListView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import * as SearchActions from '../actions/SearchActions'
-import GetCurrentLocation from '../services/GetCurrentLocation'
 import { Input, ButtonIcon } from './common'
 
 class Search extends Component {
@@ -21,9 +20,7 @@ class Search extends Component {
   }
 
   handleClick () {
-    GetCurrentLocation(location => {
-      this.props.currentLocationChanged(location)
-    })
+    this.props.getCurrentLocation()
   }
 
   handleLocationChange (text) {
@@ -35,7 +32,7 @@ class Search extends Component {
   }
 
   render () {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <View style={style.container}>
         <KeyboardAvoidingView behavior='padding'>

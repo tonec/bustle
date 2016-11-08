@@ -1,16 +1,40 @@
+import getPosition from '../services/getPosition'
 import Places from '../services/Places'
 
 import {
-  CURRENT_LOCATION_CHANGED,
+  CURRENT_LOCATION_UPDATING,
+  CURRENT_LOCATION_UPDATED,
   LOCATION_TEXT_CHANGED,
   DESTINATION_TEXT_CHANGED,
   LOCATION_LIST_UPDATING,
   LOCATION_LIST_UPDATED
 } from './types'
 
+export const currentLocationUpdating = () => {
+  return {
+    type: CURRENT_LOCATION_UPDATING
+  }
+}
+
+export const currentLocationUpdated = (location) => {
+  return {
+    type: CURRENT_LOCATION_UPDATED,
+    payload: location
+  }
+}
+
+export const getCurrentLocation = () => {
+  return (dispatch) => {
+    dispatch(currentLocationUpdating())
+    getPosition((location) => {
+      dispatch(currentLocationUpdated(location))
+    })
+  }
+}
+
 export const currentLocationChanged = (location) => {
   return {
-    type: CURRENT_LOCATION_CHANGED,
+    type: CURRENT_LOCATION_UPDATED,
     payload: location
   }
 }
