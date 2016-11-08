@@ -2,14 +2,21 @@ import React, { PropTypes } from 'react'
 import { TextInput, View, Text, StyleSheet } from 'react-native'
 
 const Input = (props) => {
-  const { label, value, onChangeText, placeholder, secureTextEntry } = props
+  const { labelText, value, onChangeText, placeholder, secureTextEntry } = props
   const { containerStyle, innerContainerStyle, labelStyle, inputStyle } = props.style
+  let label
+
+  if (labelText) {
+    label = (
+      <Text style={[styles.labelStyle, labelStyle]}>
+        {labelText}
+      </Text>
+    )
+  }
 
   return (
     <View style={[styles.containerStyle, containerStyle]}>
-      <Text style={[styles.labelStyle, labelStyle]}>
-        {label}
-      </Text>
+      {label}
       <View style={[styles.innerContainerStyle, innerContainerStyle]}>
         <TextInput
           placeholder={placeholder}
@@ -44,9 +51,10 @@ const styles = StyleSheet.create({
   containerStyle: {
     flexDirection: 'column',
     alignItems: 'flex-start',
+    paddingTop: 10,
+    paddingBottom: 0,
     paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 50
+    paddingRight: 20
   },
 
   innerContainerStyle: {
