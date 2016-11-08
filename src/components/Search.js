@@ -37,7 +37,7 @@ class Search extends Component {
   render () {
     console.log(this.props)
     return (
-      <View style={styles.container}>
+      <View style={style.container}>
         <KeyboardAvoidingView behavior='padding'>
           <Input
             labelText={''}
@@ -51,7 +51,7 @@ class Search extends Component {
               iconColor={'#fff'}
               buttonText={''}
               onPress={this.handleClick.bind(this)}
-              style={styles}
+              style={style}
             />
           </Input>
           <Input
@@ -72,7 +72,7 @@ class Search extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',

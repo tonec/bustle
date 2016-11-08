@@ -7,23 +7,23 @@ const Input = (props) => {
 
   if (labelText) {
     label = (
-      <Text style={[styles.label, props.style.label]}>
+      <Text style={[style.label, props.style.label]}>
         {labelText}
       </Text>
     )
   }
 
   return (
-    <View style={[styles.container, props.style.container]}>
+    <View style={[style.container, props.style.container]}>
       {label}
-      <View style={[styles.innerContainer, props.style.innerContainer]}>
+      <View style={[style.innerContainer, props.style.innerContainer]}>
         <TextInput
           placeholder={placeholder}
           value={value}
           onChangeText={onChangeText}
           autoCorrect={false}
           secureTextEntry={secureTextEntry}
-          style={[styles.input, props.style.input]}
+          style={[style.input, props.style.input]}
         />
         {props.children}
       </View>
@@ -45,7 +45,7 @@ Input.defaultProps = {
   style: {}
 }
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
 
   container: {
     flexDirection: 'column',

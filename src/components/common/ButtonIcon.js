@@ -9,7 +9,7 @@ const ButtonIcon = (props) => {
     name: iconName,
     size: iconSize,
     color: iconColor,
-    style: [styles.icon, props.style.icon]
+    style: [style.icon, props.style.icon]
   }
 
   let buttonTextElem
@@ -21,14 +21,14 @@ const ButtonIcon = (props) => {
 
   if (buttonText) {
     buttonTextElem = (
-      <Text style={[styles.text, props.style.text]}>
+      <Text style={[style.text, props.style.text]}>
         {buttonText}
       </Text>
     )
   }
 
   return (
-    <TouchableOpacity style={[styles.button, props.style.button]} onPress={onPress}>
+    <TouchableOpacity style={[style.button, props.style.button]} onPress={onPress}>
       {iconElem}
       {buttonTextElem}
     </TouchableOpacity>
@@ -51,7 +51,7 @@ ButtonIcon.defaultProps = {
   style: {}
 }
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   button: {
     flexDirection: 'row',
     width: 40,

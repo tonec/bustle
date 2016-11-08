@@ -3,8 +3,8 @@ import { Text, View } from 'react-native'
 
 const Header = (props) => {
   return (
-      <View style={[styles.container, props.style.container]}>
-          <Text style={[styles.headerText, props.style.headerText]}>
+      <View style={[style.container, props.style.container]}>
+          <Text style={[style.headerText, props.style.headerText]}>
             {props.headerText}
           </Text>
       </View>
@@ -20,7 +20,7 @@ Header.defaultProps = {
   style: {}
 }
 
-const styles = {
+const style = {
   container: {
     backgroundColor: '#f8f8f8',
     justifyContent: 'center',

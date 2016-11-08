@@ -5,8 +5,8 @@ const Button = (props) => {
   const { onPress, children } = props
 
   return (
-    <TouchableOpacity style={[styles.button, props.style.button]} onPress={onPress}>
-      <Text style={[styles.text, props.style.text]}>
+    <TouchableOpacity style={[style.button, props.style.button]} onPress={onPress}>
+      <Text style={[style.text, props.style.text]}>
         {children}
       </Text>
     </TouchableOpacity>
@@ -22,7 +22,7 @@ Button.defaultProps = {
   style: {}
 }
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   button: {
     alignSelf: 'stretch',
     backgroundColor: '#fff',
