@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
-import { View, KeyboardAvoidingView, StyleSheet } from 'react-native'
+import { Text, View, KeyboardAvoidingView, ListView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import * as SearchActions from '../actions/SearchActions'
 import GetCurrentLocation from '../services/GetCurrentLocation'
 import { Input, ButtonIcon } from './common'
 
 class Search extends Component {
+
+  constructor (props, context) {
+    super(props)
+
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+    this.state = { dataSource: ds.cloneWithRows(this.props.locationList) }
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(newProps.locationList)
+    })
+  }
 
   handleClick () {
     GetCurrentLocation(location => {
@@ -23,12 +36,11 @@ class Search extends Component {
 
   render () {
     console.log(this.props)
-
     return (
       <View style={styles.containerStyle}>
         <KeyboardAvoidingView behavior='padding'>
           <Input
-            label={'Location: '}
+            labelText={''}
             placeholder={'Search location'}
             onChangeText={this.handleLocationChange.bind(this)}
             value={this.props.currentLocation}
@@ -43,12 +55,17 @@ class Search extends Component {
             />
           </Input>
           <Input
-              label={'Destination: '}
+              labelText={''}
               placeholder={'Search destination'}
               onChangeText={this.handleDestinationChange.bind(this)}
               value={this.props.currentDestination}
           />
         </KeyboardAvoidingView>
+
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => <Text>{rowData}</Text>}
+        />
       </View>
     )
   }
@@ -58,7 +75,7 @@ const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'flex-start'
   },
   buttonStyle: {
     marginLeft: 10,
@@ -68,7 +85,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ search }) => {
   const { currentLocation, currentDestination, locationList } = search
-
   return { currentLocation, currentDestination, locationList }
 }
 
