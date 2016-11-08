@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, ListView, StyleSheet } from 'react-native'
+import { ListView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import * as searchActions from '../actions/searchActions'
+import SearchListItem from './SearchListItem'
+import { Card } from './common'
 
 class SearchList extends Component {
 
@@ -13,7 +15,7 @@ class SearchList extends Component {
     })
 
     this.state = {
-      dataSource: ds
+      dataSource: ds.cloneWithRows(this.props.locationList)
     }
   }
 
@@ -25,25 +27,30 @@ class SearchList extends Component {
     }
   }
 
+  renderRow (rowData) {
+    return <SearchListItem>{rowData}</SearchListItem>
+  }
+
   render () {
     // console.log(this.props)
     return (
-      <View style={style.container}>
+      <Card style={style.container}>
         <ListView
           enableEmptySections
           dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData}</Text>}
+          renderRow={this.renderRow}
         />
-      </View>
+      </Card>
     )
   }
 }
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    marginLeft: 20,
+    marginRight: 20
   }
 })
 

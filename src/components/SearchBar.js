@@ -52,7 +52,6 @@ class SearchBar extends Component {
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start'
   },

@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   locationText: null,
   destinationText: null,
   locationListUpdating: false,
-  locationList: [],
+  locationList: ['london', 'somewhere', 'sdsdsdasd', 'asdasdasd'],
   destinationList: null
 }
 
