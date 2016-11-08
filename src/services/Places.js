@@ -1,8 +1,8 @@
-import Globals from './Globals'
+import globals from './globals'
 
 export default {
-  apiUrl: Globals.placesApiUrl,
-  apiKey: Globals.placesApiKey,
+  apiUrl: globals.placesApiUrl,
+  apiKey: globals.placesApiKey,
 
   autocompletePlaceName (text) {
     const url = `${this.apiUrl}?input=${text}&types=geocode&key=${this.apiKey}`

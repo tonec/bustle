@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, KeyboardAvoidingView, ListView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import * as SearchActions from '../actions/SearchActions'
+import * as searchActions from '../actions/searchActions'
 import { Input, ButtonIcon } from './common'
 
 class Search extends Component {
@@ -86,4 +86,4 @@ const mapStateToProps = ({ search }) => {
   return { currentLocation, currentDestination, locationList }
 }
 
-export default connect(mapStateToProps, SearchActions)(Search)
+export default connect(mapStateToProps, searchActions)(Search)

@@ -1,5 +1,5 @@
 import getPosition from '../services/getPosition'
-import Places from '../services/Places'
+import places from '../services/places'
 
 import {
   CURRENT_LOCATION_UPDATING,
@@ -60,7 +60,7 @@ export const locationTextChanged = (text) => {
     })
     if (text.length > 2) {
       dispatch(locationListUpdating())
-      Places.autocompletePlaceName(text).then(res => {
+      places.autocompletePlaceName(text).then(res => {
         dispatch(locationListUpdated(res))
       }).catch(error => {
         Promise.reject(new Error(error))

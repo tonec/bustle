@@ -1,8 +1,8 @@
-import Globals from './Globals'
+import globals from './globals'
 
 export default {
-  apiUrl: Globals.geocodingApiUrl,
-  apiKey: Globals.geocodingApiKey,
+  apiUrl: globals.geocodingApiUrl,
+  apiKey: globals.geocodingApiKey,
 
   getFromLocation (location) {
     return this.getFrom('location', location)
