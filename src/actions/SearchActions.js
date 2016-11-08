@@ -15,6 +15,19 @@ export const currentLocationChanged = (location) => {
   }
 }
 
+export const locationListUpdating = () => {
+  return {
+    type: LOCATION_LIST_UPDATING
+  }
+}
+
+export const locationListUpdated = (res) => {
+  return {
+    type: LOCATION_LIST_UPDATED,
+    payload: res
+  }
+}
+
 export const locationTextChanged = (text) => {
   return (dispatch) => {
     dispatch({
@@ -22,14 +35,9 @@ export const locationTextChanged = (text) => {
       payload: text
     })
     if (text.length > 2) {
-      dispatch({
-        type: LOCATION_LIST_UPDATING
-      })
+      dispatch(locationListUpdating())
       Places.autocompletePlaceName(text).then(res => {
-        dispatch({
-          type: LOCATION_LIST_UPDATED,
-          payload: res
-        })
+        dispatch(locationListUpdated(res))
       }).catch(error => {
         Promise.reject(new Error(error))
       })
