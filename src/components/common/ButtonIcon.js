@@ -4,13 +4,12 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 const ButtonIcon = (props) => {
   const { onPress, iconName, iconSize, iconColor, buttonText } = props
-  const { buttonStyle, iconStyle, textStyle } = props.style
 
   const iconProps = {
     name: iconName,
     size: iconSize,
     color: iconColor,
-    style: [styles.iconStyle, iconStyle]
+    style: [styles.icon, props.style.icon]
   }
 
   let buttonTextElem
@@ -21,11 +20,15 @@ const ButtonIcon = (props) => {
   }
 
   if (buttonText) {
-    buttonTextElem = <Text style={[styles.textStyle, textStyle]}>{buttonText}</Text>
+    buttonTextElem = (
+      <Text style={[styles.text, props.style.text]}>
+        {buttonText}
+      </Text>
+    )
   }
 
   return (
-    <TouchableOpacity style={[styles.buttonStyle, buttonStyle]} onPress={onPress}>
+    <TouchableOpacity style={[styles.button, props.style.button]} onPress={onPress}>
       {iconElem}
       {buttonTextElem}
     </TouchableOpacity>
@@ -49,7 +52,7 @@ ButtonIcon.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-  buttonStyle: {
+  button: {
     flexDirection: 'row',
     width: 40,
     height: 40,
@@ -58,10 +61,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  iconStyle: {
+  icon: {
     margin: 0
   },
-  textStyle: {
+  text: {
     fontSize: 18,
     lineHeight: 36
   }

@@ -3,11 +3,10 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 const Button = (props) => {
   const { onPress, children } = props
-  const { buttonStyle, textStyle } = props.styles
 
   return (
-    <TouchableOpacity style={[styles.buttonStyle, buttonStyle]} onPress={onPress}>
-      <Text style={[styles.textStyle, textStyle]}>
+    <TouchableOpacity style={[styles.button, props.style.button]} onPress={onPress}>
+      <Text style={[styles.text, props.style.text]}>
         {children}
       </Text>
     </TouchableOpacity>
@@ -16,15 +15,15 @@ const Button = (props) => {
 
 Button.propTypes = {
   onPress: PropTypes.func.isRequired,
-  styles: PropTypes.object
+  style: PropTypes.object
 }
 
 Button.defaultProps = {
-  styles: {}
+  style: {}
 }
 
 const styles = StyleSheet.create({
-  buttonStyle: {
+  button: {
     alignSelf: 'stretch',
     backgroundColor: '#fff',
     borderRadius: 5,
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5
   },
-  textStyle: {
+  text: {
     alignSelf: 'center',
     color: '#007aff',
     fontSize: 16,

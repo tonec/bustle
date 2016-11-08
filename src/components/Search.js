@@ -37,7 +37,7 @@ class Search extends Component {
   render () {
     console.log(this.props)
     return (
-      <View style={styles.containerStyle}>
+      <View style={styles.container}>
         <KeyboardAvoidingView behavior='padding'>
           <Input
             labelText={''}
@@ -63,6 +63,7 @@ class Search extends Component {
         </KeyboardAvoidingView>
 
         <ListView
+          enableEmptySections
           dataSource={this.state.dataSource}
           renderRow={(rowData) => <Text>{rowData}</Text>}
         />
@@ -72,12 +73,12 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start'
   },
-  buttonStyle: {
+  button: {
     marginLeft: 10,
     backgroundColor: 'red'
   }

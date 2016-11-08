@@ -3,28 +3,27 @@ import { TextInput, View, Text, StyleSheet } from 'react-native'
 
 const Input = (props) => {
   const { labelText, value, onChangeText, placeholder, secureTextEntry } = props
-  const { containerStyle, innerContainerStyle, labelStyle, inputStyle } = props.style
   let label
 
   if (labelText) {
     label = (
-      <Text style={[styles.labelStyle, labelStyle]}>
+      <Text style={[styles.label, props.style.label]}>
         {labelText}
       </Text>
     )
   }
 
   return (
-    <View style={[styles.containerStyle, containerStyle]}>
+    <View style={[styles.container, props.style.container]}>
       {label}
-      <View style={[styles.innerContainerStyle, innerContainerStyle]}>
+      <View style={[styles.innerContainer, props.style.innerContainer]}>
         <TextInput
           placeholder={placeholder}
           value={value}
           onChangeText={onChangeText}
           autoCorrect={false}
           secureTextEntry={secureTextEntry}
-          style={[styles.inputStyle, inputStyle]}
+          style={[styles.input, props.style.input]}
         />
         {props.children}
       </View>
@@ -48,7 +47,7 @@ Input.defaultProps = {
 
 const styles = StyleSheet.create({
 
-  containerStyle: {
+  container: {
     flexDirection: 'column',
     alignItems: 'flex-start',
     paddingTop: 10,
@@ -57,17 +56,17 @@ const styles = StyleSheet.create({
     paddingRight: 20
   },
 
-  innerContainerStyle: {
+  innerContainer: {
     flexDirection: 'row'
   },
 
-  labelStyle: {
+  label: {
     fontSize: 18,
     paddingLeft: 5,
     paddingBottom: 10
   },
 
-  inputStyle: {
+  input: {
     flex: 1,
     height: 40,
     paddingRight: 10,
