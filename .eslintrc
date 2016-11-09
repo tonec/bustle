@@ -1,7 +1,10 @@
 {
-  'extends': 'standard',
+  'extends': [
+    'standard'
+  ],
   'plugins': [
-    'react'
+    'react',
+    'import'
   ],
   'env': {
     'browser': true,
@@ -20,7 +23,7 @@
     'strict': 0,
     'react/jsx-no-bind': 0,
     'indent': 0,
-    'react/prefer-es6-class': 0,
+    'react/prefer-es6-class': 1,
     'react/jsx-uses-react': 2,
     'react/jsx-uses-vars': 2,
     'react/react-in-jsx-scope': 2,
@@ -42,6 +45,7 @@
     'no-debugger': 0,
     'spaced-comment': 0,
     'no-console': 0,
-    'no-alert': 0
+    'no-alert': 0,
+    'import/no-unresolved': [2, {commonjs: true, amd: true}]
   }
 }
