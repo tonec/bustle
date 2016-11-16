@@ -14,9 +14,8 @@ class SearchListAnim extends Component {
   }
 
   componentDidMount () {
-    Animated.spring(this.state.pan, {
-       tension: 2,
-       friction: 3,
+    Animated.timing(this.state.pan, {
+       duration: 100,
        toValue: { x: 0, y: 100 }
     }).start()
   }
