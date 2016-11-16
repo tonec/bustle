@@ -13,12 +13,12 @@ const INITIAL_STATE = {
   locationText: null,
   destinationText: null,
   locationListUpdating: false,
-  locationList: ['london', 'somewhere', 'sdsdsdasd', 'asdasdasd'],
+  locationList: [],
   destinationList: null
 }
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log(action)
+  console.log(action)
 
   switch (action.type) {
 
@@ -37,9 +37,10 @@ export default (state = INITIAL_STATE, action) => {
     case LOCATION_LIST_UPDATING:
       return { ...state, locationListUpdating: true }
 
-    case LOCATION_LIST_UPDATED:
+    case LOCATION_LIST_UPDATED: {
       const locations = action.payload.predictions.map(item => item.description)
       return { ...state, locationListUpdating: false, locationList: locations }
+    }
 
     default:
       return state
