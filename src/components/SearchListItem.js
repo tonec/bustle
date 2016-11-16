@@ -4,7 +4,9 @@ import { CardSection } from './common'
 
 const SearchListItem = (props) => {
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback
+      onClick={(e) => console.log(e)}
+    >
       <View>
         <CardSection>
           <Text>
