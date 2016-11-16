@@ -11,7 +11,7 @@ class SearchBar extends Component {
   }
 
   handleLocationChange (text) {
-    this.props.locationTextChanged(text)
+    this.props.locationTextChanged(text, this.props.currentLocation, 100000)
   }
 
   handleDestinationChange (text) {

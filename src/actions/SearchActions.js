@@ -52,20 +52,19 @@ export const locationListUpdated = (res) => {
   }
 }
 
-export const locationTextChanged = (text) => {
+export const locationTextChanged = (text, location, radius) => {
   return (dispatch) => {
     dispatch({
       type: LOCATION_TEXT_CHANGED,
       payload: text
     })
-    if (text.length > 2) {
-      dispatch(locationListUpdating())
-      places.autocompletePlaceName(text).then(res => {
-        dispatch(locationListUpdated(res))
-      }).catch(error => {
-        Promise.reject(new Error(error))
-      })
-    }
+    dispatch(locationListUpdating())
+
+    places.autocompletePlaceName(text, location, radius).then(res => {
+      dispatch(locationListUpdated(res))
+    }).catch(error => {
+      Promise.reject(new Error(error))
+    })
   }
 }
 
